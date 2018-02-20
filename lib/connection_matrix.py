@@ -22,6 +22,7 @@ def I_networks(landscape, nrow, ncol, ncon, kappa, theta, seed=0, **kwargs):
         move = cal.move(nrow)
         ll = cal.landscapes[landscape_mode](
             nrow, landscape.get('specs', {}))
+        ll = np.round(ll * 7).astype(int)
 
     conmat = []
     for ii in range(npop):
@@ -47,6 +48,7 @@ def EI_networks(landscape, nrowE, ncolE, nrowI, ncolI, p, stdE, stdI, seed=0, **
         move = cal.move(nrowE)
         ll = cal.landscapes[landscape_mode](
             nrowE, landscape.get('specs', {}))
+        ll = np.round(ll * 7).astype(int)
 
     conmatEE, conmatEI = [], []
     for idx in range(npopE):
