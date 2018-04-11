@@ -79,6 +79,7 @@ def EI_networks(landscape, nrowE, ncolE, nrowI, ncolI, p, stdE, stdI, seed=0, **
         # I-> I
         source = idx, nrowI, ncolI, nrowI, ncolI, int(p * npopI), stdI
         targets, delay = lcrn.lcrn_gauss_targets(*source)
+        targets = targets[targets != idx]           # no selfconnections
         hist_targets = np.histogram(targets, bins=range(npopI + 1))[0]
         conmatII.append(hist_targets)
 

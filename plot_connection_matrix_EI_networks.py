@@ -22,9 +22,9 @@ landscapes = [
 
 nrowE, ncolE = 120, 120
 nrowI, ncolI = 60, 60
-p = 0.1                     # connection probability
-stdE = 6                    # space constant for E targets
-stdI = 3                    # space constant for I targets
+p = 0.05                    # connection probability
+stdE = 12                   # space constant for E targets
+stdI = 6                    # space constant for I targets
 
 nmax = 150
 W_bins = np.arange(0, nmax)
