@@ -24,6 +24,8 @@ def lcrn_gauss_targets(s_id, srow, scol, trow, tcol, ncon, con_std):
     # pick up ncol values for phi and radius
     phi = np.random.uniform(low=-np.pi, high=np.pi, size=ncon)
     radius = con_std * np.random.randn(ncon)
+    radius[radius>0] = radius[radius>0] + 1.
+    radius[radius<0] = radius[radius<0] - 1.
     t_x = np.remainder(radius * np.cos(phi) + s_x1, tcol)
     t_y = np.remainder(radius * np.sin(phi) + s_y1, trow)
     target_ids = np.remainder(

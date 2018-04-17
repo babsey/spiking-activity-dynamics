@@ -48,10 +48,11 @@ def tiled(nrow, specs={}):
 
 def Perlin(nrow, specs={}):
     size = specs.get('size', 5)
+    base = specs.get('base', 0)
     assert(size > 0)
 
     x = y = np.linspace(0, size, nrow)
-    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size)
+    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size, base=base)
           for j in y] for i in x]
     m = n - np.min(n)
     landscape = np.array(np.round(m * 7), dtype=int)
@@ -60,10 +61,11 @@ def Perlin(nrow, specs={}):
 
 def Perlin_uniform(nrow, specs={}):
     size = specs.get('size', 5)
+    base = specs.get('base', 100)
     assert(size > 0)
 
     x = y = np.linspace(0, size, nrow)
-    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size)
+    n = [[noise.pnoise2(i, j, repeatx=size, repeaty=size, base=base)
           for j in y] for i in x]
     m = np.concatenate(n)
     a = np.argsort(m)
