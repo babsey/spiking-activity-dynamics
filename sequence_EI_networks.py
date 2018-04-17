@@ -70,8 +70,8 @@ pop = popE + popI
 Distribute V_m
 """
 V_m = np.random.normal(-65., 5., len(pop))
-for idx in range(len(pop)):
-    nest.SetStatus([pop[idx]], {'V_m': V_m[idx]})
+V_m_all = [{'V_m': V_mi} for V_mi in V_m]
+nest.SetStatus(pop, V_m_all)
 
 
 """
@@ -99,10 +99,11 @@ sd = nest.Create('spike_detector', params={
 Get spatial connection landscape
 """
 
-# landscape = cl.random(nrowE, {'seed': 0})
-# landscape = cl.homogeneous(nrowE, {'phi': 3})
-# landscape = cl.Perlin(nrowE, {'size': 4})
-landscape = cl.Perlin_uniform(nrowE, {'size': 4, 'base': 0})
+# landscape = None                                        # Symmetric
+# landscape = cl.random(nrowE, {'seed': 0})             # Homogeneous
+# landscape = cl.homogeneous(nrowE, {'phi': 3})           # Homogeneous
+# landscape = cl.Perlin(nrowE, {'size': 4})             # Perlin
+landscape = cl.Perlin_uniform(nrowE, {'size': 4, 'base': 0})  # Perlin uniform
 
 
 """
